@@ -21,27 +21,27 @@ class User < ApplicationRecord
   
   ## Direct associations
   # User#comments: returns rows from the comments table associated to this user by the author_id column
-  has_many(:comments, class_name: "Comment", foregin_key: "actor_id")
+  has_many(:comments, class_name: "Comment", foreign_key: "actor_id")
 
   # User#own_photos: returns rows from the photos table  associated to this user by the owner_id column
-  has_many(:own_photos, class_name: "Photo", foregin_key: "owner_id")
+  has_many(:own_photos, class_name: "Photo", foreign_key: "owner_id")
 
   # User#likes: returns rows from the likes table associated to this user by the fan_id column
-  has_many(:likes, class_name: "Like", foregin_key: "fan_id")
+  has_many(:likes, class_name: "Like", foreign_key: "fan_id")
 
   # User#sent_follow_requests: returns rows from the follow requests table associated to this user by the sender_id column
-  has_many(:sent_follow_requests, class_name: "FollowRequest", foregin_key: "sender_id")
+  has_many(:sent_follow_requests, class_name: "FollowRequest", foreign_key: "sender_id")
 
   # User#received_follow_requests: returns rows from the follow requests table associated to this user by the recipient_id column
-  has_many(:received_follow_request, class_name: "FollowRequest", foregin_key: "recipient_id")
+  has_many(:received_follow_request, class_name: "FollowRequest", foreign_key: "recipient_id")
 
 
   ### Scoped direct associations
   # User#accepted_sent_follow_requests: returns rows from the follow requests table associated to this user by the sender_id column, where status is 'accepted'
-  has_many(:accepted_sent_follow_requests, -> {where status: "accept"}, class_name: "FollowRequest", foregin_key: "sender_id")
+  has_many(:accepted_sent_follow_requests, -> {where status: "accept"}, class_name: "FollowRequest", foreign_key: "sender_id")
 
   # User#accepted_received_follow_requests: returns rows from the follow requests table associated to this user by the recipient_id column, where status is 'accepted'
-  has_many(:accepted_received_follow_requests, -> {where status: "accept"}, class_name: "FollowRequest", foregin_key: "recipient_id")
+  has_many(:accepted_received_follow_requests, -> {where status: "accept"}, class_name: "FollowRequest", foreign_key: "recipient_id")
 
 
   ## Indirect associations
